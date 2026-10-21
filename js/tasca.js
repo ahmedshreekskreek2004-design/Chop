@@ -120,7 +120,7 @@ export function filtrarProductes(productes, text = "", categoria = "") {
   return productes.filter(p => {
     const coincideixNom = p.nom.toLowerCase().includes(cerca);
     const coincideixCategoria =
-      categoria === "" || p.categoria === categoria;
+      !categoria || p.categoria === categoria;
 
     return coincideixNom && coincideixCategoria;
   });

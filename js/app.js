@@ -8,20 +8,21 @@ import {
   ordenarProductes,
   filtrarProductes
 } from "./tasca.js";
-
 // Estat de l'aplicació
 let productes = [
   { id: 1, nom: "Portàtil Pro", categoria: "Electrònica", preu: 950, stock: 4 },
   { id: 2, nom: "Camiseta cotó", categoria: "Roba", preu: 18, stock: 25 },
-  { id: 3, nom: "Auriculars", categoria: "Electrònica", preu: 45, stock: 0 },
+  { id: 3, nom: "Auriculars", categoria: "Electrònica", preu: 45, stock: 0},
   { id: 4, nom: "Llibre JS Avançat", categoria: "Llibres", preu: 32, stock: 12 }
 ];
 
 let estatOrdenacio = { columna: null, ascendent: true };
 
 function actualitzarDashboard() {
+  console.log("Dashboard carregat");
   actualitzarMetriques();
   aplicarFiltres();
+  mostrarProductes(productes);
 }
 
 function mostrarProductes(llista) {
@@ -139,8 +140,10 @@ document.getElementById("filtre-categoria").addEventListener("change", aplicarFi
 function aplicarFiltres() {
   const text = document.getElementById("input-cerca").value;
   const categoria = document.getElementById("filtre-categoria").value;
-
   mostrarProductes(filtrarProductes(productes, text, categoria));
+    console.log("ahmed");
+
+
 }
 
 function carregarPerEditar(id) {
