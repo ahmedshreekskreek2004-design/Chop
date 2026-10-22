@@ -3,6 +3,7 @@
   --card-bg: #ffffff;
   --text-main: #0f172a;
   --text-muted: #64748b;
+  --text-muted-hover: #ff0000;
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --danger: #ef4444;
@@ -168,6 +169,7 @@ input:focus, select:focus {
 .btn-primary:hover { background: var(--primary-hover); }
 
 .btn-secondary { background: var(--text-muted); color: white; }
+.btn-secondary:hover { background: var(--text-muted-hover); }
 
 .btn-outline {
   background: transparent;

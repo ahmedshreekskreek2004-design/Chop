@@ -20,7 +20,7 @@ let estatOrdenacio = { columna: null, ascendent: true };
 
 function actualitzarDashboard() {
   console.log("Dashboard carregat");
-  actualitzarMetriques();
+  //actualitzarMetriques();
   aplicarFiltres();
   mostrarProductes(productes);
 }
@@ -209,7 +209,7 @@ function netejarFormulari() {
   document.getElementById("edit-id").value = "";
   document.getElementById("form-title").innerText = "➕ Afegir Producte";
   document.getElementById("btn-submit").innerText = "Guardar (push / with)";
-  document.getElementById("btn-cancel").style.display = "none";
+  document.getElementById("btn-cancel").style.display = "canselar";
 }
 
 // Funcions utilitzades pels botons inline de la taula
