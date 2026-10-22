@@ -4,17 +4,21 @@
  * Lògica de negoci: sense DOM ni dependències del navegador.
  */
 
-export function calcularMetriques(productes) {
-  const total = productes.reduce(
+export function calcularMetriques(productes, categoria = "") {
+  const productesFiltrats = categoria
+    ? productes.filter(p => p.categoria === categoria)
+    : productes;
+
+  const total = productesFiltrats.reduce(
     (acc, p) => acc + p.preu * p.stock,
     0
   );
 
-  const ultim = productes.at(-1) ?? null;
+  const ultim = productesFiltrats.at(-1) ?? null;
 
-  const senseStock = productes.some(p => p.stock === 0);
+  const senseStock = productesFiltrats.some(p => p.stock === 0);
 
-  const preusValids = productes.every(p => p.preu > 0);
+  const preusValids = productesFiltrats.every(p => p.preu > 0);
 
   return {
     total,

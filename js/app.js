@@ -50,26 +50,26 @@ function mostrarProductes(llista) {
   });
 }
 
-function actualitzarMetriques() {
-  const {
-    total,
-    ultim,
-    senseStock,
-    preusValids
-  } = calcularMetriques(productes);
+// function actualitzarMetriques() {
+//   const {
+//     total,
+//     ultim,
+//     senseStock,
+//     preusValids
+//   } = calcularMetriques(productes);
 
-  document.getElementById("val-total").innerText =
-    `${total.toFixed(2)} €`;
+//   document.getElementById("val-total").innerText =
+//     `${total.toFixed(2)} €`;
 
-  document.getElementById("val-ultim").innerText =
-    ultim ? ultim.nom : "-";
+//   document.getElementById("val-ultim").innerText =
+//     ultim ? ultim.nom : "-";
 
-  document.getElementById("val-sense-stock").innerText =
-    senseStock ? "⚠️ Manca stock" : "✅ Ok";
+//   document.getElementById("val-sense-stock").innerText =
+//     senseStock ? "⚠️ Manca stock" : "✅ Ok";
 
-  document.getElementById("val-preu-valid").innerText =
-    preusValids ? "✅ Correcte" : "❌ Error";
-}
+//   document.getElementById("val-preu-valid").innerText =
+//     preusValids ? "✅ Correcte" : "❌ Error";
+// }
 
 document.getElementById("form-producte").addEventListener("submit", e => {
   e.preventDefault();
@@ -107,10 +107,51 @@ document.getElementById("btn-cerca-last").addEventListener("click", () => {
   const ultim = cercarUltimPerCategoria(productes, categoria);
 
   if (ultim) {
-    alert(`Darrer producte trobat de ${categoria}: ${ultim.nom} (${ultim.preu}€)`);
-  } else {
+    const {
+    total,
+    ultim,
+    senseStock,
+    preusValids
+  } = calcularMetriques(productes,categoria);
+
+  document.getElementById("val-total").innerText =
+    `${total.toFixed(2)} €`;
+
+  document.getElementById("val-ultim").innerText =
+    ultim ? ultim.nom : "-";
+
+  document.getElementById("val-sense-stock").innerText =
+    senseStock ? "⚠️ Manca stock" : "✅ Ok";
+
+  document.getElementById("val-preu-valid").innerText =
+    preusValids ? "✅ Correcte" : "❌ Error";
+        alert(`Darrer producte trobat de ${categoria}: ${ultim.nom} (${ultim.preu}€)`);
+
+
+    
+  } else if(categoria === "") {
+     if (!ultim) {
+    const {
+    total,
+    ultim,
+    senseStock,
+    preusValids
+  } = calcularMetriques(productes,categoria);
+
+  document.getElementById("val-total").innerText =
+    `${total.toFixed(2)} €`;
+
+  document.getElementById("val-ultim").innerText =
+    ultim ? ultim.nom : "-";
+
+  document.getElementById("val-sense-stock").innerText =
+    senseStock ? "⚠️ Manca stock" : "✅ Ok";
+
+  document.getElementById("val-preu-valid").innerText =
+    preusValids ? "✅ Correcte" : "❌ Error";
     alert(`No hi ha cap producte de la categoria ${categoria}`);
   }
+}
 });
 
 document.querySelectorAll(".sortable").forEach(th => {
